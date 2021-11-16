@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ShowDetails = ({ imageLink, title, summary, imageTitle }) => {
   return (
     <>
-      <div className="container flex px-6 py-4 mx-auto lg:h-128 lg:py-16">
+      <div className="container flex px-6 py-4 mx-auto lg:h-128 lg:py-16 justify-center">
         <div className="flex items-center justify-center w-full h-96 lg:w-1/4">
           <img
             className="object-coverrounded-md"

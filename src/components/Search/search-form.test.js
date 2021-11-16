@@ -8,8 +8,8 @@ const mockSearchFormData = {
 
 describe("Unit - Search Form", () => {
   it("Render the search Form component without errors", async () => {
-    const { getByLabelText } = render(<SearchForm {...mockSearchFormData} />);
+    const { getByTestId } = render(<SearchForm {...mockSearchFormData} />);
 
-    expect(getByLabelText("Search episodes with a keyword:")).toBeDefined();
+    expect(getByTestId("search")).toBeInTheDocument();
   });
 });

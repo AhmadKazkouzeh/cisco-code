@@ -16,16 +16,16 @@ describe("Unit - Show Details", () => {
       <ShowDetails {...mockShowDetailsData} />
     );
 
-    expect(getByText("Doctor Who")).toBeDefined();
+    expect(getByText("Doctor Who")).toBeInTheDocument();
     expect(
       getByText(
         "Adventures across time and space with the time travelling alien and companions."
       )
-    ).toBeDefined();
+    ).toBeInTheDocument();
     expect(getByTestId("testid_Doctor Who")).toHaveAttribute(
       "src",
       "https://static.tvmaze.com/uploads/images/medium_portrait/364/911688.jpg"
     );
-    expect(getByAltText("Doctor Who")).toBeDefined();
+    expect(getByAltText("Doctor Who")).toBeInTheDocument();
   });
 });

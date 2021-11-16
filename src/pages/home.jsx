@@ -9,8 +9,8 @@ const Home = () => {
   const [show, setShow] = useState();
   const [seasons, setSeasons] = useState();
   const [isLoading, setLoading] = useState(true);
-
   const [seasonID, setSeasonID] = useState();
+  const [searchActive, setSearchActive] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -25,6 +25,10 @@ const Home = () => {
 
   const handleSeasonEpisodes = (id) => {
     setSeasonID(id);
+  };
+
+  const handleSearchActive = (value) => {
+    setSearchActive(value);
   };
 
   const toggleTheme = () => {
@@ -51,8 +55,8 @@ const Home = () => {
         title={show.name}
         summary={show.summary}
       />
-      <SearchForm seasonID={seasonID} />
-      {seasons && (
+      <SearchForm seasonID={seasonID} handleSearchActive={handleSearchActive} />
+      {seasons && !searchActive && (
         <>
           <div className="md:grid md:gap-3 md:h-screen h-auto md:grid-cols-5 p-5">
             <SeasonsList

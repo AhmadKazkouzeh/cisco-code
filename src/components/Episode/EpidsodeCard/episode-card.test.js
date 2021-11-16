@@ -10,6 +10,7 @@ const mockEpisodeCardData = {
   number: "10",
   season: "1",
   seasonID: "859",
+  image: "imagelink",
 };
 describe("Unit - Episode Card", () => {
   it("Render the episode card component without errors", async () => {
@@ -20,9 +21,9 @@ describe("Unit - Episode Card", () => {
     );
 
     await waitFor(() => {
-      expect(getByText("The Rose")).toBeDefined();
-      expect(getByText("E10-S1")).toBeDefined();
-      expect(getByText("View details")).toBeDefined();
+      expect(getByText("The Rose")).toBeInTheDocument();
+      expect(getByText("E10-S1")).toBeInTheDocument();
+      expect(getByText("View details")).toBeInTheDocument();
     });
   });
 });

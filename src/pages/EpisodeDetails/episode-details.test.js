@@ -6,18 +6,11 @@ import EpisodeDetails from "./episode-details";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 
-jest.mock("react-router", () => ({
-  ...jest.requireActual("react-router"),
-  useLocation: jest.fn().mockImplementation(() => {
-    return { state: { seasonID: "10", episodeID: "9" } };
-  }),
-}));
-
 describe("Unit - Episode Details", () => {
   test("Render the episode detail component without errors", async () => {
     const history = createMemoryHistory();
     const route = "/episode-details";
-    const state = { seasonID: 123, episodeID: 456 };
+    const state = { episodeID: 13900 };
 
     history.push(route, state);
 
@@ -28,7 +21,12 @@ describe("Unit - Episode Details", () => {
     );
 
     await waitFor(async () => {
-      expect(getByText("Episode details")).toBeDefined();
+      expect(getByText(/The Poison Sky/i)).toBeInTheDocument();
+      expect(
+        getByText(
+          /As the Sontarans choke the Earth, the Doctor and UNIT battle to keep both Martha and Donna alive./i
+        )
+      ).toBeInTheDocument();
     });
   });
 });

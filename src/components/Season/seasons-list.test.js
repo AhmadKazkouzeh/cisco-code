@@ -34,8 +34,8 @@ describe("Unit - Seasons List", () => {
     );
 
     await waitFor(() => {
-      expect(getByText("Season 1")).toBeDefined();
-      expect(getByText("Season 2")).toBeDefined();
+      expect(getByText("Season 1")).toBeInTheDocument();
+      expect(getByText("Season 2")).toBeInTheDocument();
     });
 
     fireEvent.click(getByTestId("id_860"));
