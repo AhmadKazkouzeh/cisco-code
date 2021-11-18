@@ -11,6 +11,8 @@ const mockEpisodeCardData = {
   season: "1",
   seasonID: "859",
   image: "imagelink",
+  summary:
+    "<p>When the residents of Chester's Mill find themselves trapped under a massive</p>",
 };
 describe("Unit - Episode Card", () => {
   it("Render the episode card component without errors", async () => {

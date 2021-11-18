@@ -31,24 +31,11 @@ const Home = () => {
     setSearchActive(value);
   };
 
-  const toggleTheme = () => {
-    document.querySelector("body").className = document
-      .querySelector("body")
-      .className.includes("dark")
-      ? ""
-      : "dark";
-  };
-
   if (isLoading) {
     return <div className="loading">Loading...</div>;
   }
   return (
     <>
-      <button
-        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-        onClick={toggleTheme}>
-        Switch
-      </button>
       <ShowDetails
         imageTitle={show.name}
         imageLink={show.image.medium}

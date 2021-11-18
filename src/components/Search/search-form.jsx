@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { fetchShowEpisodesData } from "../../middleware";
 import EpisodeCard from "../Episode/EpidsodeCard/episode-card";
 import PropTypes from "prop-types";
@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const SearchForm = ({ seasonID, handleSearchActive }) => {
   const [allShowEpisode, setAllShowEpisode] = useState();
   const [filteredData, setFilteredData] = useState();
-  const [textInput, setTextInput] = useState("");
+  const [noMatch, setNoMatch] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -15,51 +15,45 @@ const SearchForm = ({ seasonID, handleSearchActive }) => {
     })();
   }, []);
 
-  const handleSearch = useCallback((e) => {
-    setTextInput(e.target.value);
+  const handleSearch = (e) => {
     let value = e.target.value.toLowerCase();
     let result = allShowEpisode?.filter((item) =>
       item.summary.toLowerCase().includes(value)
     );
-    if (value !== "") {
+
+    if (value !== "" && result.length >= 1) {
       setFilteredData(result);
       handleSearchActive(true);
+      setNoMatch(false);
+    } else if (value !== "" && result.length === 0) {
+      setNoMatch(true);
     } else {
       setFilteredData([]);
       handleSearchActive(false);
     }
-  });
+  };
 
   return (
     <>
-      <div className="flex items-center justify-center">
+      <div id="search" className="flex items-center justify-center">
         <div className="flex border-2 rounded">
           <input
             type="text"
-            className="px-4 py-2 w-80"
+            className="px-4 py-2 w-80 dark:bg-gray-700 focus:outline-none focus:ring focus:border-blue-300 dark:text-white"
             data-testid="search"
             id="search"
             name="search"
             placeholder="Search..."
             onChange={handleSearch}
-            value={textInput}
           />
-          <button
-            className="flex items-center justify-center px-4 border-l"
-            onClick={() => setTextInput("")}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 0 24 24"
-              width="24px"
-              fill="#000000">
-              <path d="M0 0h24v24H0V0z" fill="none" />
-              <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z" />
-            </svg>
-          </button>
         </div>
       </div>
-      {filteredData?.length >= 1 && (
+      {noMatch && (
+        <p class="text-lg font-light leading-relaxed mt-6 mb-4 text-blueGray-800 dark:text-white">
+          Sorry, nothing found
+        </p>
+      )}
+      {filteredData?.length >= 1 && !noMatch && (
         <div className="col-span-4 flex items-stretch -mx-4 flex-wrap">
           {filteredData.map((episode) => (
             <EpisodeCard

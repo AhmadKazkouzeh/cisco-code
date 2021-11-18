@@ -1,10 +1,12 @@
 import React from "react";
 import { Home, EpisodeDetails } from "./pages";
 import { Route, Switch } from "react-router-dom";
+import NavBar from "./components/NavBar/nav-bar";
 import "./App.css";
 function App() {
   return (
-    <div className="App">
+    <div class="App dark:bg-gray-900">
+      <NavBar />
       <div className="container mx-auto">
         <Switch>
           <Route path="/" exact component={Home} />

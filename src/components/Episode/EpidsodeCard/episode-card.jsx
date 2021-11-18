@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import sanitizeHTML from "../../../Utils/utils";
 
 const EpisodeCard = ({ id, key, name, number, season, image, summary }) => {
   return (
@@ -12,7 +13,7 @@ const EpisodeCard = ({ id, key, name, number, season, image, summary }) => {
           {name}
         </h1>
         <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
-          {summary?.replace(/(<([^>]+)>)/gi, "")}
+          {sanitizeHTML(summary)}
         </p>
       </div>
       <div>

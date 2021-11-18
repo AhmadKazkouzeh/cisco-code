@@ -6,7 +6,26 @@ import EpisodeDetails from "./episode-details";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 
+jest.mock("../../middleware", () => {
+  return {
+    __esModules: true,
+    fetchOneEpisode: jest.fn().mockResolvedValue({
+      id: 859,
+      url: "https://www.tvmaze.com/seasons/859/doctor-who-season-1",
+      number: 1,
+      name: "Pilot",
+      episodeOrder: 13,
+      airdate: "2005-12-25",
+      rating: { average: 7 },
+      summary:
+        "<p>When the residents of Chester's Mill find themselves trapped under a massive</p>",
+    }),
+  };
+});
 describe("Unit - Episode Details", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
   test("Render the episode detail component without errors", async () => {
     const history = createMemoryHistory();
     const route = "/episode-details";
@@ -14,17 +33,22 @@ describe("Unit - Episode Details", () => {
 
     history.push(route, state);
 
-    const { getByText } = render(
+    const { getByText, getByTestId } = render(
       <Router history={history}>
         <EpisodeDetails />
       </Router>
     );
 
     await waitFor(async () => {
-      expect(getByText(/The Poison Sky/i)).toBeInTheDocument();
+      expect(getByTestId(/Back/i)).toBeInTheDocument();
+
+      expect(getByText(/2005-12-25/i)).toBeInTheDocument();
+      expect(getByText("7 / 10")).toBeInTheDocument();
+
+      expect(getByText(/Pilot/i)).toBeInTheDocument();
       expect(
         getByText(
-          /As the Sontarans choke the Earth, the Doctor and UNIT battle to keep both Martha and Donna alive./i
+          /When the residents of Chester's Mill find themselves trapped under a massive/i
         )
       ).toBeInTheDocument();
     });

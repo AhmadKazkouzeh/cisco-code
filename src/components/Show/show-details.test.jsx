@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import ShowDetails from "./show-details";
 
 const mockShowDetailsData = {
@@ -10,11 +10,13 @@ const mockShowDetailsData = {
     "Adventures across time and space with the time travelling alien and companions.",
   imageTitle: "Doctor Who",
 };
+
 describe("Unit - Show Details", () => {
   test("Render the show details component without errors", () => {
     const { getByText, getByTestId, getByAltText } = render(
       <ShowDetails {...mockShowDetailsData} />
     );
+    const scrollToEpisodes = jest.fn();
 
     expect(getByText("Doctor Who")).toBeInTheDocument();
     expect(
@@ -27,5 +29,7 @@ describe("Unit - Show Details", () => {
       "https://static.tvmaze.com/uploads/images/medium_portrait/364/911688.jpg"
     );
     expect(getByAltText("Doctor Who")).toBeInTheDocument();
+
+    fireEvent;
   });
 });
