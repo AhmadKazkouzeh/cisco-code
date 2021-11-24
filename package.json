@@ -21,8 +21,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test setupTests.js",
-    "eject": "react-scripts eject"
+    "test": "jest test setupTests.js"
   },
   "eslintConfig": {
     "extends": [

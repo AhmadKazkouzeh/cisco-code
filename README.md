@@ -1,6 +1,6 @@
-# Cisco Code Chalange
+# Cisco Code Challenge
 
-This project was written for cisco code chalange
+This project was written for cisco code challenge
 
 In the project directory, you can run:
 

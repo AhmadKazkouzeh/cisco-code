@@ -42,12 +42,12 @@ const EpisodeCard = ({ id, key, name, number, season, image, summary }) => {
 
 EpisodeCard.propTypes = {
   id: PropTypes.number.isRequired,
-  key: PropTypes.number.isRequired,
+  key: PropTypes.number,
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  number: PropTypes.number,
   image: PropTypes.string.isRequired,
   season: PropTypes.number.isRequired,
-  summary: PropTypes.string.isRequired,
+  summary: PropTypes.string,
 };
 
 export default EpisodeCard;

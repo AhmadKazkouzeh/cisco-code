@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar/nav-bar";
 import "./App.css";
 function App() {
   return (
-    <div class="App dark:bg-gray-900">
+    <div className="App dark:bg-gray-900">
       <NavBar />
       <div className="container mx-auto">
         <Switch>

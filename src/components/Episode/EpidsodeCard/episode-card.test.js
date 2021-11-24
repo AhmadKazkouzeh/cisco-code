@@ -14,6 +14,7 @@ const mockEpisodeCardData = {
   summary:
     "<p>When the residents of Chester's Mill find themselves trapped under a massive</p>",
 };
+
 describe("Unit - Episode Card", () => {
   it("Render the episode card component without errors", async () => {
     const { getByText } = render(

@@ -16,9 +16,9 @@ const EpisodesList = ({ seasonID }) => {
   return (
     <>
       <div className="col-span-4 flex items-stretch -mx-4 flex-wrap">
-        {episodesList?.map((episode, k) => (
+        {episodesList?.map((episode, key) => (
           <EpisodeCard
-            key={k}
+            key={key}
             id={episode.id}
             name={episode.name}
             number={episode.number}

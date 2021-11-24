@@ -49,7 +49,7 @@ const SearchForm = ({ seasonID, handleSearchActive }) => {
         </div>
       </div>
       {noMatch && (
-        <p class="text-lg font-light leading-relaxed mt-6 mb-4 text-blueGray-800 dark:text-white">
+        <p className="text-lg font-light leading-relaxed mt-6 mb-4 text-blueGray-800 dark:text-white">
           Sorry, nothing found
         </p>
       )}

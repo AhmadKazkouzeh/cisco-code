@@ -25,7 +25,6 @@ const EpisodeDetails = () => {
 
   return (
     <div>
-      {" "}
       <div className="flex mt-10 ml-10">
         <button
           data-testid="back"
@@ -58,9 +57,9 @@ const EpisodeDetails = () => {
             <span className="text-sm font-light text-gray-600 dark:text-gray-400">
               {episode.airdate}
             </span>
-            <a className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded">
+            <span className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded">
               {episode.rating.average} / 10
-            </a>
+            </span>
           </div>
 
           <div className="mt-2">

@@ -1,4 +1,4 @@
 const sanitizeHTML = (html) => {
-  return html.replace(/(<([^>]+)>)/gi, "");
+  return html?.replace(/(<([^>]+)>)/gi, "");
 };
 export default sanitizeHTML;

@@ -10,7 +10,7 @@ const ShowDetails = ({ imageLink, title, summary, imageTitle }) => {
       <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
         <div className="flex flex-col md:flex-row items-center justify-center w-full h-96">
           <img
-            classNameName="object-cover w-full h-full max-w-xs rounded-md"
+            className="object-cover w-full h-full max-w-xs rounded-md"
             src={imageLink}
             alt={imageTitle}
             data-testid={`testid_${imageTitle}`}
@@ -32,7 +32,6 @@ const ShowDetails = ({ imageLink, title, summary, imageTitle }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                {" "}
                 <path
                   d="M11.0001 3.67157L13.0001 3.67157L13.0001 16.4999L16.2426 13.2574L17.6568 14.6716L12 20.3284L6.34314 14.6716L7.75735 13.2574L11.0001 16.5001L11.0001 3.67157Z"
                   fill="currentColor"
